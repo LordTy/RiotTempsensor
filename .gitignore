@@ -1,4 +1,0 @@
-bin/*
-compile_commands.json
-networksettings.inc.mk
-.clangd/*
