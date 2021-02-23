@@ -1,0 +1,16 @@
+[Unit]
+Description=Riot 802.15.4 network service
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=screen -dmS riot-networking "${RIOTTOOLS}/usb-cdc-ecm/start_network.sh  2001:db8::/64"
+Restart=always
+RestartSec=15s
+KillMode=process
+TimeoutSec=infinity
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
