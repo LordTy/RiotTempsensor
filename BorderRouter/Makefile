@@ -9,8 +9,10 @@ UPLINK = cdc-ecm
 
 include $(RIOTBASE)/examples/gnrc_border_router/Makefile
 
-install-service:
+riot-networking.service: riot-networking.service.template
 	envsubst < riot-networking.service.template > riot-networking.service
-	cp riot-networking.service /lib/systemd/system/
-	systemctl enable riot-networking
-	systemctl start riot-networking
+
+.PHONY:install-service
+install-service: riot-networking.service	
+	cp riot-networking.service /etc/systemd/system/
+	systemctl enable --now riot-networking
